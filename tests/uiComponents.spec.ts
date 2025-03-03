@@ -12,11 +12,7 @@ test.beforeEach(async({page})=>{
         await page.getByText('Form Layouts').click()
       })
 
-      test('input fields', async ({page/*, testInfo*/}) => {
-        //How conditions before retry can be added
-       /* if(testInfo.retry){
-          //do something( e.g. clean the db)
-        }*/
+      test('input fields', async ({page}) => {
         const usingTheGridEmailInput = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name: "Email"})
 
         await usingTheGridEmailInput.fill('test@test.com')
