@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
-import {PageManager} from '../page-object/pageManager'
-import {faker} from '@faker-js/faker'
+import {PageManager} from '../page-object/pageManager';
+import { faker } from '@faker-js/faker';
 
 test.beforeEach(async({page})=>{
     await page.goto('/')
@@ -21,7 +21,7 @@ test.beforeEach(async({page})=>{
     const randomEmail = `${randomFullName.replace(' ', '')}${faker.number.int(1000)}@test.com `
 
     await pm.navigateTo().formLayoutsPage()
-    await pm.onFormLayoutsPage().submitUsingTheGridFormWitheCredentialsAndSelectoption(process.env.USENAME,process.env.PASSWORD, "Option 1")
+    await pm.onFormLayoutsPage().submitUsingTheGridFormWitheCredentialsAndSelectoption(process.env.USERNAME,process.env.PASSWORD, "Option 1")
     await page.screenshot({path: 'screenshots/formLayoutsPage.png'})
     const buffer = await page.screenshot()
     console.log(buffer.toString('base64'))
