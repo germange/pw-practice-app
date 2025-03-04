@@ -80,6 +80,15 @@ export default defineConfig<TestOptions>({
       use: { ...devices['Desktop Safari'] },
     },
 
+    {
+      name: 'mobile',
+      testMatch: 'testMobile.spec.ts',
+      use: {
+        ...devices['Pixel 5'],
+        //viewport: {width: 1920, height: 1000}
+      }
+    },
+
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
