@@ -3,7 +3,7 @@ import {PageManager} from '../page-object/pageManager'
 import {faker} from '@faker-js/faker'
 
 test.beforeEach(async({page})=>{
-    await page.goto('http://localhost:4200')
+    await page.goto('/')
   })
 
   test('navigate to form page', async ({page}) => {
@@ -21,8 +21,12 @@ test.beforeEach(async({page})=>{
     const randomEmail = `${randomFullName.replace(' ', '')}${faker.number.int(1000)}@test.com `
 
     await pm.navigateTo().formLayoutsPage()
-    await pm.onFormLayoutsPage().submitUsingTheGridFormWitheCredentialsAndSelectoption("test@test.com", "Welcome1", "Option 1")
+    await pm.onFormLayoutsPage().submitUsingTheGridFormWitheCredentialsAndSelectoption(process.env.USENAME,process.env.PASSWORD, "Option 1")
+    await page.screenshot({path: 'screenshots/formLayoutsPage.png'})
+    const buffer = await page.screenshot()
+    console.log(buffer.toString('base64'))
     await pm.onFormLayoutsPage().submitInlineFormWithNmaeEmailAndCheckbox(randomFullName, randomEmail, true)
+    await page.locator('nb-card', {hasText: "Inline Form"}).screenshot({path: 'screenshots/inlineForm.png'})
     await pm.navigateTo().datePickerPage()
     await pm.ondatePickerPage().selectCommonDatePickerDateFromToday(3)
     await pm.ondatePickerPage().selectDatePickerWithRangeFromToday(1,2)
