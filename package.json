@@ -11,7 +11,7 @@
     "start": "ng serve",
     "pageObject-devwithURL": "URL=http://uitestingplayground.com/ajax npx playwright test usePageObject.spec.ts --project=dev --headed",
     "pageObject-dev": "npx playwright test usePageObject.spec.ts --project=dev --headed",
-    "pageObject-chrome": "npx playwright test usePageObject.spec.ts --project=chromium --headed",
+    "pageObject-chrome": "npx playwright test usePageObject.spec.ts --project=chromium",
     "pageObject-firefox": "npx playwright test usePageObject.spec.ts --project=firefox --headed",
     "pageObjects-all-sequence": "npm run pageObject-chrome && npm run pageObject-firefox",
     "pageObjects-all-parallel": "npm run pageObject-chrome & npm run pageObject-firefox"
