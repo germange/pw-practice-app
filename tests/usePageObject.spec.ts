@@ -7,7 +7,7 @@ test.beforeEach(async({page})=>{
     await page.goto('/')
   })
 
-  test.only('navigate to form page', { tag: ['@smoke', '@regression'] }, async ({page}) => {
+  test('navigate to form page', { tag: ['@smoke', '@regression'] }, async ({page}) => {
     const pm = new PageManager(page)
     await pm.navigateTo().formLayoutsPage()
     await pm.navigateTo().datePickerPage()
