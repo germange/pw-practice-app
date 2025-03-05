@@ -1,12 +1,13 @@
 import {test, expect} from '@playwright/test';
 import {PageManager} from '../page-object/pageManager';
 import { faker } from '@faker-js/faker';
+import { env } from 'process';
 
 test.beforeEach(async({page})=>{
     await page.goto('/')
   })
 
-  test('navigate to form page', { tag: ['@smoke', '@regression'] }, async ({page}) => {
+  test.only('navigate to form page', { tag: ['@smoke', '@regression'] }, async ({page}) => {
     const pm = new PageManager(page)
     await pm.navigateTo().formLayoutsPage()
     await pm.navigateTo().datePickerPage()
@@ -21,7 +22,7 @@ test.beforeEach(async({page})=>{
     const randomEmail = `${randomFullName.replace(' ', '')}${faker.number.int(1000)}@test.com `
 
     await pm.navigateTo().formLayoutsPage()
-    await pm.onFormLayoutsPage().submitUsingTheGridFormWitheCredentialsAndSelectoption(process.env.USERNAME,process.env.PASSWORD, "Option 1")
+    await pm.onFormLayoutsPage().submitUsingTheGridFormWitheCredentialsAndSelectoption(env.TESTUSERNAME,env.TESTPASSWORD, "Option 1")
     await page.screenshot({path: 'screenshots/formLayoutsPage.png'})
     //convert image to buffer
     /*const buffer = await page.screenshot()
